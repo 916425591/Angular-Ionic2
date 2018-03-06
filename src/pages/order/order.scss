@@ -1,0 +1,94 @@
+page-order {
+
+}
+.grid-bottom{
+    background: #ccc;    padding-bottom: 60px;
+}
+.buton-site{
+    color: #FFFFFF;
+    border-radius:25px;
+    border: 1px solid #fff;
+        margin: 0 auto;
+}
+.border-botton-none .item-inner{
+    border-bottom:0px !important ;
+}
+.order-list{
+    margin: 10px 0px;
+    padding: 0px;
+        background: #fff;
+}
+.order-list li{
+        padding: 13px 8px 13px 0px;
+    border-bottom: 1px solid #dedede;
+    margin-left: 16px;
+    list-style: none;
+    font-size: 1.4rem;
+}
+.order-list li:last-child{
+    border-bottom: 0px solid #dedede;
+}
+.order-list li span{
+    margin-left: 4px;
+    min-width: 46px;
+    text-align: right;
+    display: inline-block;
+}
+.very-size{
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #000;
+}
+.order-h2{
+    background: url(../assets/img/bs-docs-masthead-pattern.png) #21B94E;
+    margin: 0px;
+    padding: 1.6rem 0px;
+    text-align: center;
+    color: #fff;
+}
+.item-md{
+    font-size: 1.4rem;
+}
+.remark{
+    float: left;
+    width: 100%;
+    background: #fff;
+    padding: 0px 0px 10px 16px;
+}
+.remark span{
+    border: 1px solid #dedede;
+    width: 60px;
+    display: inline-block;
+    float: left;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin:0px 8px 4px 0px;
+    border-radius: 4px;
+}
+.remarkadd{
+    background: #21B94E;
+    color: #FFFFFF;
+    border: 1px solid #21B94E !important;
+}
+.remark p{
+        float: left;
+    margin: 0px;
+    width: 100%;
+    padding: 13px 0px 13px 0px;
+    border-top: 1px solid #dedede;
+}
+.remark textarea{
+    width: 95%;
+    margin-right: 8px;
+    border: 1px solid #dedede;
+    min-height: 5rem;
+}
+.bill-button{
+    padding: 0 1.6em;
+    height: 25px;
+    font-size: 1.2rem;
+    background: #32db64;
+    color: #fff;
+    border-radius: 3px;
+}

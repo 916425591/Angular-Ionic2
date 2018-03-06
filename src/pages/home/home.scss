@@ -1,0 +1,207 @@
+ion-slides {
+    display: block;
+    width: 100%;
+    height: inherit; 
+}
+.overhide{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mar-4{
+    margin: 0.2em 0px 0.4rem 0rem;
+}
+.span-padding{
+    padding: 0.1rem 0.2rem 0rem 0.2rem;
+    border-radius:4px ;
+    border: 1px solid #608aff;
+    color: #608aff;
+}
+h5{
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+.home-icon button{
+    border-radius:20px ;
+    width: 19%;
+    margin: 0px 0.5%;
+    
+}
+ .home-icon .icon {
+    padding: 0px 0.5rem;
+}
+.labelling{
+    float: left;
+    width: 100%;
+    display: flex;
+    margin: 0.4rem 0px 0px 0px;
+}
+.labelling h4{
+    margin-top: 0.6rem;
+    margin-bottom: 0.2rem;
+    color: #ff4545;
+    font-weight: bold;
+}
+.labelling-4 h6{
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+.labelling-5{
+    float: left;
+    width: 50%;
+    max-width: 50%;
+    padding: 5px;
+    background: #f0f9f8;
+}
+.labelling-7{
+    float: left;
+    width: 70%;
+    max-width: 70%;
+    padding: 5px;
+}
+
+.labelling-3{
+    float: left;
+    width: 30%;
+    max-width: 30%;
+    padding: 5px;
+}
+.labelling-3 img{
+    width: 100%;
+    margin-top: 0.2rem;
+        max-width: 5rem;
+}
+.labllling-10{
+    float: left;
+    width: 100%;
+    display: flex;
+    margin: 0.26rem 0px 0.4rem 0px;
+}
+.labelling-4 h5{
+        margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+.labelling-4{
+    width: 33%;
+    float: left;
+    background: #f0f9f8;
+    text-align: center;
+    padding: 0.8rem 0px 0.6rem 0px;
+}
+.labelling-4 img{
+    border-radius:3px ;
+}
+.high-type{
+    float: left;
+    width: 100%;
+    margin: 0.3rem 0px 0.3rem 0px;
+}
+.high-h5{
+    float: left;
+    width: 100%;
+    line-height: 27px;
+}
+.high-h5 button{
+    float: right;
+    margin: 0px;
+}
+.high-h5 span{
+    color: #c18526;
+    font-weight: bold;
+}
+.high-h5 button span{
+    color: #000;
+        font-weight: inherit;
+}
+
+.high-h5-red{
+    float: left;
+    width: 100%;
+    line-height: 27px;
+}
+.high-h5-red button{
+    float: right;
+    margin: 0px;
+}
+.high-h5-red span{
+    color: #ff4545;
+    font-weight: bold;
+}
+.high-h5-red button span{
+    color: #000;
+        font-weight: inherit;
+}
+.ion-cord-m{
+    margin: 10px 0px;
+    width: 100%;
+}
+.orange-color{
+    //color: #ff791a;
+    color:#ffc623
+}
+.gray-color{
+   color: #ebebeb; 
+}
+.pd-ds .orange-color{
+    margin-right: 0.2rem;
+}
+.pd-ds .gray-color{
+    margin-right: 0.2rem;
+}
+.pd-ds-span{
+    margin-left: 1rem;
+}
+.consists{
+    color: #FFFFFF;
+    background:#ffc623;
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    margin-right: 3px;
+}
+.gray-scale{
+        color: #ebebeb;
+    padding: 0rem 0.1rem;
+    border-radius: 2px;
+    float: right;
+    margin-left: 3px;
+    border: 1px solid #ebebeb;
+    font-weight: normal;
+    font-size: 1.6rem;
+}
+.freight-left span{
+    font-size: 1.4rem;
+    padding:0px 10px 0px 10px;
+    border-left:1px solid #ebebeb ;
+}
+.freight-left span:first-child{
+   padding:0px 10px 0px 0px; 
+   border-left:0px solid #ebebeb ;
+}
+.left{
+ float: left;    
+}
+.right{
+    float: right;
+}
+.ion-cord-m{
+    position: relative;
+}
+.item-new{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: #fff;
+    width: 0px;
+    height: 0px;
+    border-top: 38px solid #21B94E;
+    border-right: 38px solid transparent;
+}
+.item-new:before{
+    content: '新';
+    position: absolute;
+    top: -32px;
+    left: 6px;
+    font-size: 1.4rem;
+}

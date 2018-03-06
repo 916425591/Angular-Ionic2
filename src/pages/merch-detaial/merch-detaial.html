@@ -1,0 +1,154 @@
+<!--
+  Generated template for the MerchDetaialPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header id="header">
+	<ion-navbar color="primary">
+		<ion-title *ngIf="merchHide" [style.opacity]="navsOpacity">{{merchdata.name}}</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="openModal()">
+        <ion-icon name="ios-cart"></ion-icon>
+      </button>
+		</ion-buttons>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="openModal()">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content (ionscroll)="onPageScroll($event)">
+	<div class="profile" id="profile" [style.opacity]="profileOpacity">
+		<img src="{{merchdata.img}}">
+		<div class="profile-list">
+			<h2>{{merchdata.name}}
+				 <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" style="position: relative;top: 0.1rem;float: right;"></ion-icon>
+			</h2>
+			<p>欢迎光临，用餐高峰期请提前下单，谢谢。</p>
+			<span class="profile-span" *ngIf="merchdata.labelling.brands ==1">品牌</span>
+			<span class="profile-span-min">快递专送.约20分钟</span>
+		</div>
+	</div>
+	<p class="w-5"><span>首</span>新用户下单立减17元（不与其他活动同享）</p>
+
+	<!--左右滑动效果-->
+	<div (swipe)="swipeEvent($event)" id="segmentHome" class="grid-bottom">
+		<ion-segment [(ngModel)]="segmentModel">
+			<ion-segment-button value="hot">
+				热销
+				<span *ngIf="hotNumber > 0" class="hint-soge">{{hotNumber}}</span>
+			</ion-segment-button>
+			<ion-segment-button value="beverages">
+				茶饮
+				<span *ngIf="teaNumber > 0" class="hint-soge">{{teaNumber}}</span>
+			</ion-segment-button>
+			<ion-segment-button value="hamBurg">
+				特色
+				<span *ngIf="featureNumber > 0" class="hint-soge">{{featureNumber}}</span>
+			</ion-segment-button>
+			<ion-segment-button value="food">
+				主食
+				<span *ngIf="foodNumber > 0" class="hint-soge">{{foodNumber}}</span>
+			</ion-segment-button>
+		</ion-segment>
+		<div class="host" >
+			<div [ngSwitch]="segmentModel">
+				<ion-list *ngSwitchCase="'hot'">
+					<ion-item *ngFor="let host of merchHot" >
+						<ion-thumbnail item-left>
+							<img src="{{host.img}}">
+						</ion-thumbnail>
+						<h2>{{host.name}}<span class="right color-red">￥{{host.money}}</span></h2>
+						<div style="font-size: 1.2rem;">味道好吃，麻辣不腻(月售{{host.sales}}单)</div>
+						<p class="pd-ds">
+							<ion-icon name="ios-star" class="orange-color" *ngFor="let i of  getKeys(host.appraise)">
+							</ion-icon>
+							<ion-icon name="ios-star" closs="gray-color" *ngFor="let i of  getKeys(5-host.appraise)">
+							</ion-icon>
+						</p>
+						<div class="button-bag">
+							<button ion-button outline class="button-add" *ngIf="host.number > 0" (click)="ChangeMoney(host,'remove')">—</button>
+							<span class="add-span" *ngIf="host.number > 0">{{host.number}}</span>
+							<button ion-button class="button-add" (click)="ChangeMoney(host,'add')"><ion-icon name="ios-add-outline" ></ion-icon></button>
+						</div>
+
+					</ion-item>
+				</ion-list>
+				<ion-list *ngSwitchCase="'beverages'">
+					<ion-item *ngFor="let beverages of merchTea">
+						<ion-thumbnail item-left>
+							<img src="{{beverages.img}}">
+						</ion-thumbnail>
+						<h2>{{beverages.name}}<span class="right color-red">￥{{beverages.money}}</span></h2>
+						<div style="font-size: 1.2rem;">味道好吃，麻辣不腻月售（{{beverages.sales}}）单</div>
+						<p class="pd-ds">
+							<ion-icon name="ios-star" class="orange-color" *ngFor="let i of  getKeys(beverages.appraise)">
+							</ion-icon>
+							<ion-icon name="ios-star" closs="gray-color" *ngFor="let i of  getKeys(5-beverages.appraise)">
+							</ion-icon>
+						</p>
+						<div class="button-bag">
+							<button ion-button outline class="button-add" *ngIf="beverages.number > 0" (click)="ChangeMoney(beverages,'remove')">—</button>
+							<span class="add-span" *ngIf="beverages.number > 0">{{beverages.number}}</span>
+							<button ion-button class="button-add" (click)="ChangeMoney(beverages,'add')"><ion-icon name="ios-add-outline" ></ion-icon></button>
+						</div>
+					</ion-item>
+				</ion-list>
+				<ion-list *ngSwitchCase="'hamBurg'">
+					<ion-item *ngFor="let hamBurg of merchFeaturn ">
+						<ion-thumbnail item-left>
+							<img src="{{hamBurg.img}}">
+						</ion-thumbnail>
+						<h2>{{hamBurg.name}}<span class="right color-red">￥{{hamBurg.money}}</span></h2>
+						<div style="font-size: 1.2rem;">味道好吃，麻辣不腻月售（{{hamBurg.sales}}）单</div>
+						<p class="pd-ds">
+							<ion-icon name="ios-star" class="orange-color" *ngFor="let i of  getKeys(hamBurg.appraise)">
+							</ion-icon>
+							<ion-icon name="ios-star" closs="gray-color" *ngFor="let i of  getKeys(5-hamBurg.appraise)">
+							</ion-icon>
+						</p>
+						<div class="button-bag">
+							<button ion-button outline class="button-add" *ngIf="hamBurg.number > 0" (click)="ChangeMoney(hamBurg,'remove')">—</button>
+							<span class="add-span" *ngIf="hamBurg.number > 0">{{hamBurg.number}}</span>
+							<button ion-button class="button-add" (click)="ChangeMoney(hamBurg,'add')"><ion-icon name="ios-add-outline" ></ion-icon></button>
+						</div>
+					</ion-item>
+				</ion-list>
+				<ion-list *ngSwitchCase="'food'">
+					<ion-item *ngFor="let food of merchFood ">
+						<ion-thumbnail item-left>
+							<img src="{{food.img}}">
+						</ion-thumbnail>
+						<h2>{{food.name}}<span class="right color-red"> ￥{{food.money}}</span></h2>
+						<div style="font-size: 1.2rem;">味道好吃，麻辣不腻月售（{{food.sales}}）单</div>
+						<p class="pd-ds">
+							<ion-icon name="ios-star" class="orange-color" *ngFor="let i of  getKeys(food.appraise)">
+							</ion-icon>
+							<ion-icon name="ios-star" closs="gray-color" *ngFor="let i of  getKeys(5-food.appraise)">
+							</ion-icon>
+						</p>
+						<div class="button-bag">
+							<button ion-button outline class="button-add" *ngIf="food.number > 0" (click)="ChangeMoney(food,'remove')">—</button>
+							<span class="add-span" *ngIf="food.number > 0">{{food.number}}</span>
+							<button ion-button class="button-add" (click)="ChangeMoney(food,'add')"><ion-icon name="ios-add-outline" ></ion-icon></button>
+						</div>
+					</ion-item>
+				</ion-list>
+			</div>
+		</div>
+	</div>
+</ion-content>
+<div class="footer-merch">
+	<button ion-button class="cart-go">
+        <ion-icon name="ios-cart"></ion-icon>
+      </button>
+	<div class="tool-title">
+		<p>￥{{gatherMoney}}元</p>
+		<p>另加3元配送费</p>
+	</div>
+	<button class="back-show"(click)="windUp(merchdata)" [disabled]="gatherMoney<25">
+        {{hint}}
+  </button>
+</div>

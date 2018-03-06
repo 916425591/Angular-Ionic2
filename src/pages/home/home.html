@@ -1,0 +1,122 @@
+<ion-header>
+	<div>
+		<span></span>
+		<div>
+			<span>
+				<b>22°</b>
+				<b>晴</b>
+			</span>
+			<ion-icon name="partly-sunny"></ion-icon>
+		</div>
+	</div>
+	<ion-navbar color="primary">
+		<ion-searchbar (click)="onInputClick()"></ion-searchbar>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-slides pager>
+		<ion-slide>
+			<img src="http://bpic.588ku.com/back_pic/00/02/56/355619000264256.jpg!/fh/300/quality/90/unsharp/true/compress/true" alt="美食" title="油画涂料背景">
+		</ion-slide>
+		<ion-slide>
+			<img src="http://bpic.588ku.com/back_pic/00/02/56/355619000264256.jpg!/fh/300/quality/90/unsharp/true/compress/true" alt="油画涂料背景" title="油画涂料背景">
+		</ion-slide>
+		<ion-slide>
+			<img src="http://bpic.588ku.com/back_pic/00/02/56/355619000264256.jpg!/fh/300/quality/90/unsharp/true/compress/true" alt="油画涂料背景" title="油画涂料背景">
+		</ion-slide>
+	</ion-slides>
+	<ion-grid>
+		<ion-row class="home-icon">
+			<button ion-button color="light"><ion-icon name="ice-cream"></ion-icon><span>美食</span></button>
+			<button ion-button><ion-icon name="ios-pizza"></ion-icon><span>早餐</span></button>
+			<button ion-button color="secondary"><ion-icon name="ios-restaurant"></ion-icon><span>品牌</span></button>
+			<button ion-button color="danger"><ion-icon name="ios-pizza"></ion-icon><span>新店</span></button>
+			<button ion-button color="secondary"><ion-icon name="ios-restaurant"></ion-icon><span>折扣</span></button>
+		</ion-row>
+		<div class="labelling">
+			<div class="labelling-5">
+				<div class="labelling-7">
+					<h4>天天特价</h4>
+					<div>美食一折起</div>
+				</div>
+				<div class="labelling-3">
+					<img src="../../assets/img/icon/icon1.png">
+				</div>
+			</div>
+			<div class="labelling-5" style="margin-left: 0.2rem;">
+				<div class="labelling-7">
+					<h4>霸王餐</h4>
+					<div>领20元红包</div>
+				</div>
+				<div class="labelling-3">
+					<img src="../../assets/img/icon/icon11.png">
+				</div>
+			</div>
+		</div>
+		<div class="labllling-10">
+			<div class="labelling-4">
+				<img src="../../assets/img/icon/icon14.png">
+				<h6>你订餐我买单</h6>
+				<div>无门槛红包15元</div>
+			</div>
+			<div class="labelling-4" style="margin-left: 0.25rem;">
+				<img src="../../assets/img/icon/icon15.png">
+				<h6>霸王餐</h6>
+				<div>领20元红包</div>
+			</div>
+			<div class="labelling-4" style="margin-left: 0.25rem;">
+				<img src="../../assets/img/icon/icon16.png">
+				<h6>霸王餐</h6>
+				<div>领20元红包</div>
+			</div>
+		</div>
+		<img src="http://bpic.588ku.com/back_pic/00/11/30/4756377d01eee6c.jpg" style="max-height: 94px;">
+		<div class="high-type">
+			<h5 class="high-h5"><span>品质优选</span><button ion-button small color="light" clear>更多 <ion-icon name="ios-arrow-forward" style="margin-left: 0.3rem;"></ion-icon></button></h5>
+			<div class="labelling-4" col-3 *ngFor="let search of brands"  (click)="merchDetaial(search)">
+				<img src="{{search.img}}">
+				<div class="overhide mar-4">{{search.name}}</div>
+				<span class="span-padding">品牌推荐</span>
+			</div>
+
+		</div>
+		<div class="high-type">
+			<h5 class="high-h5-red"><span >推荐商家</span><button ion-button small color="light" clear>更多<ion-icon name="ios-arrow-forward" style="margin-left: 0.3rem;"></ion-icon></button></h5>
+			<ion-card *ngFor="let itemData of itemData" class="ion-cord-m" (click)="merchDetaial(itemData)">
+				<ion-item>
+					<ion-avatar item-start>
+						<img src="{{itemData.img}}">
+						<span class="item-new" *ngIf="itemData.labelling.new ==1"></span>
+					</ion-avatar>
+					<h2 style="font-weight: bold;    font-size: 1.8rem;">
+			    	<span class="consists" *ngIf="itemData.labelling.brands ==1">品牌</span>
+			    	{{itemData.name}}
+			    	<span class="gray-scale" *ngIf="itemData.labelling.ticket ==1">票</span>
+			    	<span class="gray-scale" *ngIf="itemData.labelling.protection ==1">保</span>
+			    </h2>
+					<p class="pd-ds">
+						<ion-icon name="ios-star" class="orange-color" *ngFor="let i of  getKeys(itemData.appraise)">
+						</ion-icon>
+						<ion-icon name="ios-star" closs="gray-color" *ngFor="let i of  getKeys(5-itemData.appraise)">
+						</ion-icon>
+						<span class="pd-ds-span">月售（{{itemData.sales}}）单</span>
+					</p>
+					<div class="pd-ds">
+						<div class="freight-left left">
+							<span>15起送</span>
+							<span>5元配送</span>
+						</div>
+						<div class="freight-left right">
+							<span>18 分钟</span>
+							<span style="padding: 0px 0px 0px 10px;">(2.6 Km)</span>
+						</div>
+					</div>
+				</ion-item>
+			</ion-card>
+		</div>
+		<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+			<ion-infinite-scroll-content></ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</ion-grid>
+</ion-content>

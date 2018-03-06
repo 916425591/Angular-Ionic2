@@ -1,0 +1,102 @@
+<!--
+  Generated template for the OrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title>订单配送至</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div class="profile">
+		<button ion-button outline class="buton-site">
+      <ion-icon name="ios-add-outline" ></ion-icon>添加收货地址
+    </button>
+	</div>
+	<ion-grid class="grid-bottom">
+		<ion-item class="border-botton-none">
+			<h3 style="font-size: 2.2rem;">尽快送达[预计时间 15:40]
+				<ion-icon name="ios-arrow-forward" class="right" style="    margin-top: 0.3rem;"></ion-icon>
+			</h3>
+			<p>
+				<button ion-button>蜂鸟送达</button>
+				<button ion-button color="secondary">准时达</button>
+				<button ion-button clear>超时10分钟享赔付<ion-icon name="ios-help-circle-outline" ></ion-icon></button></p>
+		</ion-item>
+
+		<ul class="order-list">
+			<h2 class="order-h2">{{orderData.name}}</h2>
+			<li *ngFor="let orderList of orderList">
+				<label>{{orderList.name}}</label>
+				<span class="right">
+					<span><ion-icon ios="ios-close" md="md-close"></ion-icon> {{orderList.number}}</span><span>￥{{orderList.total}}</span>
+				</span>
+			</li>
+			<li>
+				<label>配送费</label>
+				<span class="right">￥5</span>
+			</li>
+			<li>
+				<label>在线支付立减</label>
+		    <span class="right color-red">-￥3</span>
+			</li>
+			<li>
+				<label> 红包</label>
+				<span class="right color-red">-￥6</span>
+			</li>
+			<li class="border-botton-none">
+				<label>优惠说明</label>
+				<span class="right">小计 ￥<a class="very-size">{{orderData.gatherMoney}}</a></span>
+			</li>
+		</ul>
+
+		<ion-item style="margin-bottom: 10px;" class="border-botton-none">
+			<h4 style="font-size: 1.6rem;">成为超级会员，本单减少5元<ion-icon name="ios-help-circle-outline"></ion-icon></h4>
+			<p>每月都送你20元无门槛红包</p>
+		</ion-item>
+
+		<ion-item>
+			<ion-label> 支付宝免支付</ion-label>
+			<ion-toggle checked="false"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label> 匿名购买</ion-label>
+			<ion-toggle checked="false"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label> 餐具份数/口味偏好</ion-label>
+			<ion-toggle [(ngModel)]="mushrooms"></ion-toggle>
+		</ion-item>
+		<div class="remark" *ngIf="mushrooms">
+				 <p style="border-top: 0px solid #dedede;"><span *ngFor="let remarkData of remark.remarkList" [class.remarkadd]="remarkData.number%2 != 0" (click)="remarkAdd(remarkData)">{{remarkData.name}}</span>
+				 	<span  (click)="cuteryAdd()">x{{remark.cutleryNumber}}餐具</span>
+				 </p>
+				 <textarea [(ngModel)]="remark.title"></textarea>
+			</div>
+		<ion-item class="border-botton-none">
+			<ion-label> 未满50.0元，不能开发票</ion-label>
+			<ion-toggle [disabled]="orderData.gatherMoney<50" [(ngModel)]="getmoney"></ion-toggle>
+		</ion-item>
+		<div class="remark" *ngIf="getmoney">
+				  <p>
+				  	<button class="bill-button">个人</button>
+				  	<button class="bill-button">公司</button>
+				  </p>
+				  <textarea [(ngModel)]="remark.bill"></textarea>
+		</div>
+	</ion-grid>
+</ion-content>
+
+<div class="footer-merch">
+	<div class="tool-title" style="    margin-left: 1rem;">
+		<p>￥{{orderData.gatherMoney}}元</p>
+		<p>另加3元配送费</p>
+	</div>
+	<button class="back-show" (click)="windUp(orderData)" [disabled]="gatherMoney<25">
+        支付
+  </button>
+</div>
